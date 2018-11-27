@@ -48,5 +48,26 @@ namespace BF_Test.Controllers
                 return $"Issue on server side. Issue message - {ex.Message}";
             }
         }
+
+
+        [HttpGet]
+        [Route("SetInterval")]
+        public string SetInterval(int intervalMillisecondsValue)
+        {
+            try
+            {
+                _service.SetCallingInterval(intervalMillisecondsValue);
+                var finalResult = TimeSpan.FromMilliseconds(intervalMillisecondsValue);
+                var finalResultSec = finalResult.TotalSeconds;
+                var finalResultMin = finalResult.TotalMinutes;
+                return $"Calling interval sec - {finalResultSec}, min - {finalResultMin}";
+
+            }
+            catch (Exception ex)
+            {
+                // logging, etc
+                return $"Issue on server side. Issue message - {ex.Message}";
+            }
+        }
     }
 }

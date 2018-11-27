@@ -10,5 +10,8 @@ namespace BF_Test.Services.Interfaces
     {
         string ConvertTo(string toCurrency, decimal value);
         string ConvertFrom(string fromCurrency, decimal value);
+
+        void SetCallingInterval(int interval);
+
     }
 }
