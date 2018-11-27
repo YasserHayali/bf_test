@@ -11,5 +11,7 @@ namespace BF_Test.Helpers
         public const string API_KEY = "fb577531b0ac4fceb17d7e3dd5c33c3b";
 
         public static TimeSpan DEFAULT_CACHE_EXPIRATION = TimeSpan.FromDays(30);
+
+        public const string TEST_ADMIN_AUTH_TOKEN = "admin";
     }
 }

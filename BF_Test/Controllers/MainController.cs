@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BF_Test.Helpers;
 using BF_Test.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -51,16 +52,15 @@ namespace BF_Test.Controllers
 
 
         [HttpGet]
+        [CustomAuthorizationFilter]
         [Route("SetInterval")]
         public string SetInterval(int intervalMillisecondsValue)
         {
             try
             {
                 _service.SetCallingInterval(intervalMillisecondsValue);
-                var finalResult = TimeSpan.FromMilliseconds(intervalMillisecondsValue);
-                var finalResultSec = finalResult.TotalSeconds;
-                var finalResultMin = finalResult.TotalMinutes;
-                return $"Calling interval sec - {finalResultSec}, min - {finalResultMin}";
+                var finalResultSec = TimeSpan.FromMilliseconds(intervalMillisecondsValue).TotalSeconds;
+                return $"Calling interval seconds - {finalResultSec}";
 
             }
             catch (Exception ex)
